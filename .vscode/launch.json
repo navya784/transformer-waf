@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    { "name": "1. Generate dataset", "type": "debugpy", "request": "launch",
+      "module": "waf.generate_dataset", "args": ["--n", "12000"] },
+    { "name": "2. Train", "type": "debugpy", "request": "launch",
+      "module": "waf.train", "args": ["--epochs", "3"] },
+    { "name": "3. Evaluate", "type": "debugpy", "request": "launch",
+      "module": "waf.evaluate" },
+    { "name": "4. Demo app (WAF-protected)", "type": "debugpy", "request": "launch",
+      "module": "uvicorn", "args": ["demo_app:app", "--reload", "--port", "8000"] }
+  ]
+}

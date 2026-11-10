@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+data/*.csv
+models/*
+!models/.gitkeep
+.pytest_cache/

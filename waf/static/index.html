@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transformer WAF Dashboard</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header><h1>Transformer WAF Dashboard</h1><p>Type or pick a request. The model classifies it as benign, SQL injection or XSS.</p></header>
+<main>
+  <section class="card">
+    <h2>Request</h2>
+    <div class="row"><div><label>Method</label><select id="method"><option>GET</option><option>POST</option><option>PUT</option><option>DELETE</option></select></div>
+    <div><label>Path</label><input id="path" value="/search"></div></div>
+    <label>Query string (after the ?)</label><input id="query" placeholder="q=running shoes">
+    <label>Body (form or JSON)</label><textarea id="body" placeholder='{"username":"alice"}'></textarea>
+    <button class="primary" id="go">Inspect request</button>
+    <label style="margin-top:16px">Quick examples</label>
+    <div id="chips"></div>
+  </section>
+
+  <section class="card">
+    <h2>Result</h2>
+    <div id="result" class="muted">No request inspected yet.</div>
+  </section>
+
+  <section class="card full">
+    <h2>Test suite <button class="ghost" id="suite" style="float:right">Run all examples</button></h2>
+    <div id="suiteOut" class="muted">Runs every quick example and compares the model's answer with the expected label.</div>
+  </section>
+
+  <section class="card full">
+    <h2>History</h2>
+    <table><thead><tr><th>Time</th><th>Request</th><th>Verdict</th><th>Class</th><th>Score</th></tr></thead><tbody id="hist"></tbody></table>
+  </section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
